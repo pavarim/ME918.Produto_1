@@ -1,0 +1,11 @@
+instrucoes_dos_trabalhos/
+README.Rmd
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.ini
+*.rds
+*.csv
+*.pdf
+*.json

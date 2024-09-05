@@ -1,0 +1,12 @@
+tabela: iris.csv
+
+# modelo: (reg_linear | reg_logistica)
+modelo: reg_linear
+
+# reutilizar_modelo: (s | n) Diz se deve ajustar novamente o modelo ou pegar 
+# da pasta /saidas.
+reutilizar_modelo: nn
+
+pares:
+  - "y": Sepal.Length
+    "x": [Sepal.Width, Petal.Length]
