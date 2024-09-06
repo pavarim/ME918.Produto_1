@@ -29,7 +29,7 @@ Para executar o projeto corretamente, é necessário que o usuário tenha:
 - Linguagem de programação `R` na versão $4.3.2$ ou compatível;
 - Um arquivo `configuracao.yaml` que define os parâmetros para a
   execução do pipeline;
-- Um conjunto de dados no formato CSV localizado na pasta `entradas/`;
+- Um conjunto de dados no formato `csv` localizado na pasta `entradas/`;
 - Um arquivo `preditores.json` contendo os valores das variáveis
   preditoras, que será utilizado para gerar as predições localizado na
   pasta `entradas/`.
@@ -41,7 +41,7 @@ de entrada do produto, como o nome do banco de dados, o tipo de modelo a
 ser ajustado, as variáveis preditoras e a variável resposta. As
 configurações a serem fornecidas devem ser as seguintes:
 
-- `tabela`: nome do arquivo de dados no formato CSV, o qual contém as
+- `tabela`: nome do arquivo de dados no formato `csv`, o qual contém as
   observações a serem utilizadas no treinamento;
 - `modelo`: dever ser `reg_linear` para ajustar uma regressão linear ou
   `reg_logstica` para ajustar uma regressão logística;
@@ -103,9 +103,7 @@ Além disso, de forma alternativa, é possível executar o produto por meio
 do `R`, sendo necessário abrir o `R` e utilizar o seguinte comando no
 console:
 
-``` r
-source('main.R')
-```
+`r title="teste" source('main.R')`
 
 <!-- O script `main.R` realiza as seguintes etapas: -->
 <!-- - Se `reutilizar_modelo for nao, ele ajusta o modelo especificado no arquivo configuracao.yaml, utilizando o arquivo de dados fornecido, e salva o modelo ajustado na pasta saidas; -->
@@ -117,11 +115,15 @@ source('main.R')
 Ao final da execução, os seguintes arquivos serão gerados na pasta
 `saidas/`:
 
-- Modelos ajustados, com sufixo `.rds`;
+- Modelos ajustados, com sufixo `.rds` (e.g. `fit1.rds`);
 - Arquivo de predição com sufixo `.json` contendo as predições geradas
-  pelo modelo escolhido;
+  pelo modelo escolhido (e.g. `fit1_predicao.json`);
 - Um gráfico comparando os valores observados e preditos identificando o
   modelo escolhido salvo em formato `.pdf`
   (e.g. `fit1_predito_observado.pdf`);
 - Um QQPlot identificando o modelo escolhido em formato `.pdf`
   (e.g. `fit1_QQplot.pdf`).
+
+# Exemplos
+
+Configurações de um
