@@ -52,9 +52,9 @@ configurações a serem fornecidas devem ser as seguintes:
   fazer predição. Caso nenhum modelo seja escolhido, será utilizado
   `fit1`;
 - `pares`: deve conter uma lista de blocos. Cada bloco é um conjunto de
-  pares chave-valor, os quais geram arquivos com o sufixo .RDS. Ademais,
-  Para preditores categóricos, não utilizar valores numéricos na sua
-  identificação. Cada bloco deve conter:
+  pares chave-valor, os quais geram arquivos com o sufixo `.rds`.
+  Ademais, Para preditores categóricos, não utilizar valores numéricos
+  na sua identificação. Cada bloco deve conter:
   - `"y"`: a variável resposta;
   - `"x"`: as variáveis preditoras.
 
@@ -107,23 +107,21 @@ console:
 source('main.R')
 ```
 
-O script `main.R` realiza as seguintes etapas:
-
-- Se reutilizar_modelo for nao, ele ajusta o modelo especificado no
-  arquivo configuracao.yaml, utilizando o arquivo de dados fornecido, e
-  salva o modelo ajustado na pasta saidas;
-- Executa o script predicao.R, que gera predições com base no modelo
-  ajustado e nas variáveis preditoras fornecidas no arquivo
-  preditores.json;
-- Executa o script grafico.R, que gera um gráfico comparando os valores
-  observados e preditos e salva esse gráfico na pasta saidas.
+<!-- O script `main.R` realiza as seguintes etapas: -->
+<!-- - Se `reutilizar_modelo for nao, ele ajusta o modelo especificado no arquivo configuracao.yaml, utilizando o arquivo de dados fornecido, e salva o modelo ajustado na pasta saidas; -->
+<!-- - Executa o script predicao.R, que gera predições com base no modelo ajustado e nas variáveis preditoras fornecidas no arquivo preditores.json; -->
+<!-- - Executa o script grafico.R, que gera um gráfico comparando os valores observados e preditos e salva esse gráfico na pasta saidas. -->
 
 # Resultados
 
 Ao final da execução, os seguintes arquivos serão gerados na pasta
-saidas:
+`saidas/`:
 
-- O modelo ajustado salvo na pasta saidas, no formato .rds.
-- Arquivo .json contendo as predições geradas pelo modelo.
-- Um gráfico comparando os valores observados e preditos, salvo na pasta
-  saidas em formato .pdf.
+- Modelos ajustados, com sufixo `.rds`;
+- Arquivo de predição com sufixo `.json` contendo as predições geradas
+  pelo modelo escolhido;
+- Um gráfico comparando os valores observados e preditos identificando o
+  modelo escolhido salvo em formato `.pdf`
+  (e.g. `fit1_predito_observado.pdf`);
+- Um QQPlot identificando o modelo escolhido em formato `.pdf`
+  (e.g. `fit1_QQplot.pdf`).
