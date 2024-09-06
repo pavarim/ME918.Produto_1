@@ -3,35 +3,36 @@
 
 Este projeto foi desenvolvido para criar um pipeline automatizado que
 integra treinamento, predição e análise gráfica de modelos de regressão
-linear ou logística. O produto é configurável, adaptando-se facilmente a
+linear e logística. O produto é configurável, adaptando-se facilmente a
 diferentes conjuntos de dados e configurações, com base em um arquivo de
 configuração no formato YAML.
 
 A estrutura do projeto é composta pelos seguintes diretórios e arquivos:
 
-- `entradas/`: Arquivos de entrada, o que incluem o banco de dados,
+- `entradas/`: pasta com arquivos de entrada, isto é, o banco de dados,
   arquivo de configurações e arquivo com valores a serem preditos pelo
   modelo;
-- `saidas/`: Arquivos gerados (modelos, gráficos, etc.);
-- `treinamento.R`: Script de treinamento do modelo;
-- `predicao.R`: Script de predição do modelo;
-- `grafico.R`: Script de análise gráfica;
-- `main.R`: Script principal que integra todas as partes;
-- `README.md`: Arquivo de documentação;
-- `configuracao.yaml`: Arquivo de configuração.
+- `saidas/`: psata com os arquivos gerados (modelos, gráficos e
+  predições);
+- `R/`: pasta contendo os *scripts*:
+  - `treinamento.R`: Script de treinamento do modelo;
+  - `predicao.R`: script de predição do modelo;
+  - `grafico.R`: script de análise gráfica;
+- `main.R`: script principal que integra todas as partes;
+- `README.md`: arquivo de documentação;
+- `configuracao.yaml`: arquivo de configuração.
 
 # Requisitos
 
-Para executar o projeto corretamente, é necessário que o usuário
-forneça:
+Para executar o projeto corretamente, é necessário que o usuário tenha:
 
-- Um arquivo de configuração no formato YAML, denominado
-  `configuracao.yaml`, que define os parâmetros para a execução do
-  pipeline.
+- Linguagem de programação `R` na versão $4.3.2$ ou compatível;
+- Um arquivo `configuracao.yaml` que define os parâmetros para a
+  execução do pipeline;
 - Um conjunto de dados no formato CSV localizado na pasta `entradas/`;
 - Um arquivo `preditores.json` contendo os valores das variáveis
-  preditoras, que será utilizado para gerar as predições, também
-  localizado na pasta `entradas/`.
+  preditoras, que será utilizado para gerar as predições localizado na
+  pasta `entradas/`.
 
 # Arquivo de Configuração e Predição
 
@@ -41,8 +42,7 @@ ser ajustado, as variáveis preditoras e a variável resposta. As
 configurações a serem fornecidas devem ser as seguintes:
 
 - `tabela`: nome do arquivo de dados no formato CSV, o qual contém as
-  observações a serem utilizadas no treinamento. O banco de dados deve
-  estar na pasta `entradas/`;
+  observações a serem utilizadas no treinamento;
 - `modelo`: dever ser `reg_linear` para ajustar uma regressão linear ou
   `reg_logstica` para ajustar uma regressão logística;
 - `reutilizar_modelo`: deve ser `sim` para quando deseja-se reutilizar
@@ -50,19 +50,18 @@ configurações a serem fornecidas devem ser as seguintes:
   um novo modelo. Os modelos ajustados são salvos na pasta `saídas/`;
 - `escolhe_modelo`: Deve especificar qual modelo será uttilizado para
   fazer predição. Caso nenhum modelo seja escolhido, será utilizado
-  `fit1`.
-- `pares`: deve conter uma lista com blocos. Cada bloco deve ter uma
-  chave `"y"` identificando a variável resposta e uma chave `"x"`
-  identificando as variáveis preditoras. É possível ajustar mais de um
-  modelo com apenas uma execução. Para cada bloco, é gerado um objeto
-  .RDS nomeado por fit seguido de um número, começando em 1. Para
-  preditores categóricos, não utilizar valores numéricos na sua
-  identificação.
+  `fit1`;
+- `pares`: deve conter uma lista de blocos. Cada bloco é um conjunto de
+  pares chave-valor, os quais geram arquivos com o sufixo .RDS. Ademais,
+  Para preditores categóricos, não utilizar valores numéricos na sua
+  identificação. Cada bloco deve conter:
+  - `"y"`: a variável resposta;
+  - `"x"`: as variáveis preditoras.
 
 A seguir, temos um exemplo de como o arquivo `configuracoes.yaml` deve
 ser estruturado, utilizando o conjunto de dados `mtcars`, para fazer
 duas regressões logística utilizando `vs` como variável resposta e `wt`,
-para o primeiro modelo, e `wt` e `cyl` para o segundo:
+para o primeiro modelo, e `wt` e `cyl` para o segundo como preditores:
 
 ``` r
 tabela: mtcars.csv
@@ -78,9 +77,10 @@ pares:
 
 Além disso, é necessário escolher para qual modelo deve ser feita a
 predição, tal configuração deve ser especificada no arquivo
-`predicao.json`. Considerando o segundo modelo ajustado (`fit2`) e o
-interesse em fazer predição para 2 conjuntos de preditores, temos que o
-arquivo é dado por:
+`configuracoes.yaml`, neste caso foi escolhido o segundo modelo ajustado
+(`fit2`). Além disso, considere o interesse em fazer predição para dois
+conjuntos de preditores, temos que o arquivo `preditores.jsom` é dado
+por:
 
 ``` r
 [
@@ -100,7 +100,7 @@ sinalizada abaixo), após isso execute o comando:
     & 'C:\Program Files\R\R-4.3.2\bin\x64\Rscript.exe' main.R
 
 Além disso, de forma alternativa, é possível executar o produto por meio
-do R, sendo necessário abrir o R e utilizar o seguinte comando no
+do `R`, sendo necessário abrir o `R` e utilizar o seguinte comando no
 console:
 
 ``` r
