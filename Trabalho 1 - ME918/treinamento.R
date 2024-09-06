@@ -10,7 +10,7 @@ for (i in 1:length(config$pares)) {
     
   } else if (config$modelo == 'reg_logistica') {
     # regressao logistica
-    fit <- glm(formulas, data = db, family=binomial)
+    fit <- glm(formulas, data = db, family = binomial)
     
   } else {
     stop('Especificações de modelo incorretas, usar
