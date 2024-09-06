@@ -6,7 +6,6 @@ library(glue)
 library(yaml)
 library(jsonlite)
 library(ggplot2)
-library(farver)
 
 config <- read_yaml('configuracao.yaml')  # lendo configuracoes
 
