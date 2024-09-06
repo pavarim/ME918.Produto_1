@@ -1,5 +1,3 @@
-Documentação do Projeto de Predição
-================
 
 # Introdução
 
@@ -35,9 +33,9 @@ forneça:
   preditoras, que será utilizado para gerar as predições, também
   localizado na pasta `entradas/`.
 
-# Arquivo de Configuração
+# Arquivo de Configuração e Predição
 
-O arquivo configuracao.yaml é utilizado para especificar os parâmetros
+O arquivo `configuracao.yaml` é utilizado para especificar os parâmetros
 de entrada do produto, como o nome do banco de dados, o tipo de modelo a
 ser ajustado, as variáveis preditoras e a variável resposta. As
 configurações a serem fornecidas devem ser as seguintes:
@@ -49,41 +47,47 @@ configurações a serem fornecidas devem ser as seguintes:
   `reg_logstica` para ajustar uma regressão logística;
 - `reutilizar_modelo`: deve ser `sim` para quando deseja-se reutilizar
   um modelo anteriormente ajustado ou `nao` caso o objetivo seja ajustar
-  o modelo. Os modelos são salvos na pasta `saídas/`;
-- `escolhe_modelo`: Deve serpecificar qual modelo será uttilizado para
+  um novo modelo. Os modelos ajustados são salvos na pasta `saídas/`;
+- `escolhe_modelo`: Deve especificar qual modelo será uttilizado para
   fazer predição. Caso nenhum modelo seja escolhido, será utilizado
   `fit1`.
 - `pares`: deve conter uma lista com blocos. Cada bloco deve ter uma
   chave `"y"` identificando a variável resposta e uma chave `"x"`
   identificando as variáveis preditoras. É possível ajustar mais de um
   modelo com apenas uma execução. Para cada bloco, é gerado um objeto
-  .RDS nomeado por fit seguido de um número, começando em 1.
+  .RDS nomeado por fit seguido de um número, começando em 1. Para
+  preditores categóricos, não utilizar valores numéricos na sua
+  identificação.
 
-A seguir, temos um exemplo de como esse arquivo deve ser estruturado,
-para uma regressão logística utilizando o conjunto de dados `mtcars` e
-as variáveis `am`, como resposta, e `wt` e `cyl` como preditoras:
+A seguir, temos um exemplo de como o arquivo `configuracoes.yaml` deve
+ser estruturado, utilizando o conjunto de dados `mtcars`, para fazer
+duas regressões logística utilizando `vs` como variável resposta e `wt`,
+para o primeiro modelo, e `wt` e `cyl` para o segundo:
 
 ``` r
 tabela: mtcars.csv
 modelo: reg_logistica
 reutilizar_modelo: nao
-escolhe_modelo: fit1
+escolhe_modelo: fit2
 pares:
-  - "y": am
-    "x": [wt, cyl]
+  - "y": vs
+    "x": [wt]
+  - "y": vs
+    "x": [wt, drat]
 ```
 
-- modelo: Especifica o tipo de modelo a ser ajustado. As opções
-  possíveis são:
-  - reg_linear - Para ajustar um modelo de regressão linear;
-  - reg_logistica - Para ajustar um modelo de regressão logística;
-- reutilizar_modelo: Indica se um modelo previamente ajustado deve ser
-  reutilizado ou se um novo modelo deve ser treinado. As opções são sim
-  (reutiliza) ou nao (treina novamente);
-- escolhe_modelo: Nome do arquivo de modelo salvo na pasta saidas a ser
-  utilizado para predições. Apenas relevante se reutilizar_modelo for
-  sim; pares: Define a variável resposta (y) e as variáveis
-  preditoras (x) para o ajuste do modelo.
+Além disso, é necessário escolher para qual modelo deve ser feita a
+predição, tal configuração deve ser especificada no arquivo
+`predicao.json`. Considerando o segundo modelo ajustado (`fit2`) e o
+interesse em fazer predição para 2 conjuntos de preditores, temos que o
+arquivo é dado por:
+
+``` r
+[
+  {"wt":1,"drat":3},
+  {"wt":1,"drat":5}
+]
+```
 
 # Execucao do Produto
 
