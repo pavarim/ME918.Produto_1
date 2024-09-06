@@ -11,6 +11,6 @@ library(farver)
 config <- read_yaml('configuracao.yaml')  # lendo configuracoes
 
 # executando
-if (config$reutilizar_modelo %in% c('não', 'nao')) source('treinamento.R')
-source('predicao.R')
-source('grafico.R')
+if (config$reutilizar_modelo %in% c('não', 'nao')) source('R/treinamento.R')
+source('R/predicao.R')
+source('R/grafico.R')
