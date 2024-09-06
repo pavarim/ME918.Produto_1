@@ -1,6 +1,11 @@
-preditores <- fromJSON('entradas/preditores.json')  # lendo json
-fit <- readRDS('saidas/fit.rds')  # lendo modelo
+if (is.null(config$escolhe_modelo)) {
+  config$escolhe_modelo <- 'fit1'
+}
 
-predicao_val <- predict(fit, newdata = preditores)
+fit <- readRDS(glue('saidas/{config$escolhe_modelo}.rds'))  # lendo modelo
 
-toJSON(predicao_val, path = 'saidas/predicao.json')
+preditores <- fromJSON('entradas/preditores.json')          # lendo json
+
+predicao_val <- predict(fit, newdata = preditores, type = 'response')
+
+write(toJSON(predicao_val), file = glue('saidas/{config$escolhe_modelo}_predicao.json'))

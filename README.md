@@ -1,3 +1,1 @@
-Neste repositório são apresentados os 4 trabalhos desenvolvidos durante a matéria Produto de Dados (ME918).
-
-### Projeto 1
+Neste repositório são apresentados os 4 trabalhos desenvolvidos durante a matéria Produto de Dados (ME918). Dentro de cada trabalho será encontrado uma breve documentação sobre como utilizar.

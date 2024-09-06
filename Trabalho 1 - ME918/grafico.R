@@ -1,8 +1,27 @@
-fit <- readRDS('saidas/fit.rds')  # lendo modelo
+if (is.null(config$escolhe_modelo)) {
+  config$escolhe_modelo <- 'fit1'
+}
+
+fit <- readRDS(glue('saidas/{config$escolhe_modelo}.rds'))  # lendo modelo
+
+db <- data.frame('x' = fit$fitted.values, 'y' = fit$model[[1]])
+
+grafico <- ggplot(aes(x = x, y = y), data = db) +
+  geom_point(size = 2) +
+  geom_vline(xintercept = predicao_val, linetype = 'dashed',
+             linewidth = 0.8, color = '#7f7f7f') +
+  labs(x = 'Valores Preditos', y = 'Valores Observados') +
+  theme_bw()
+
+ggsave(glue('saidas/{config$escolhe_modelo}_predito_observado.pdf'), grafico,
+       device = 'pdf', width = 8)
 
 
-pdf('saidas/grafico_predicao.pdf', width = 7, height = 5)
-plot(x = fit$fitted.values, y = fit$model[[1]],
-     xlab = 'Preditos', ylab = 'Observados')
-abline(v=predicao_val, lty = 9, col = rgb(0, 0, 0, alpha = 0.6))
-dev.off()
+qqplot <- ggplot(aes(sample = residuals(fit)), data = db) +
+  stat_qq(col = 'blue') +
+  stat_qq_line(col = 'red') +
+  labs(x = 'Quantil Teórico', y = 'Quantil Amostral') +
+  theme_bw()
+
+ggsave(glue('saidas/{config$escolhe_modelo}_QQplot.pdf'), qqplot,
+       device = 'pdf', width = 8)

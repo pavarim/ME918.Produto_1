@@ -1,12 +1,15 @@
-tabela: iris.csv
+tabela: mtcars.csv
 
 # modelo: (reg_linear | reg_logistica)
 modelo: reg_linear
 
-# reutilizar_modelo: (s | n) Diz se deve ajustar novamente o modelo ou pegar 
+# reutilizar_modelo: (sim | nao | não) Deve ajustar novamente o modelo ou pegar 
 # da pasta /saidas.
-reutilizar_modelo: nn
+reutilizar_modelo: nao
+
+# modelo utilizado para fazer predicao
+escolhe_modelo: fit1
 
 pares:
-  - "y": Sepal.Length
-    "x": [Sepal.Width, Petal.Length]
+  - "y": mpg
+    "x": [wt, drat]
