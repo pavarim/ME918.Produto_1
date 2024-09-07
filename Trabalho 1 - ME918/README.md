@@ -157,7 +157,7 @@ resposta e `wt`, para o primeiro modelo, e `mpg` e `drat`, para o
 segundo modelo, como variáveis preditoras basta ajustar o arquivo
 `configuracoes.yaml` da seguinte forma:
 
-``` r
+``` yaml
 tabela: mtcars.csv
 modelo: reg_logistica
 reutilizar_modelo: nao
@@ -175,7 +175,7 @@ predição, note que neste caso foi selecionado o segundo modelo ajustado
 preditores, temos que o arquivo `preditores.json` deve ser configurado
 como:
 
-``` r
+``` json
 [
   {"mpg":18,"drat":3},
   {"mpg":20,"drat":5}
