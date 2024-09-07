@@ -9,9 +9,8 @@ arquivo de configuração no formato YAML.
 
 A estrutura do projeto é composta pelos seguintes diretórios e arquivos:
 
-- `entradas/`: pasta com arquivos de entrada, isto é, o banco de dados,
-  arquivo de configurações e arquivo com valores a serem preditos pelo
-  modelo;
+- `entradas/`: pasta com arquivos de entrada, isto é, o banco de dados e
+  arquivo com valores a serem preditos pelo modelo;
 - `saidas/`: psata com os arquivos gerados (modelos, gráficos e
   predições);
 - `R/`: pasta contendo os *scripts*:
@@ -83,7 +82,7 @@ que o arquivo `preditores.json` deve ser configrado como:
 ]
 ```
 
-# Execucao do Produto
+# Execução do Produto
 
 O produto pode ser executado através do script `main.R`, que faz a
 integração das três partes principais: treinamento, predição e geração

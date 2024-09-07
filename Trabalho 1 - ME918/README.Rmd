@@ -60,7 +60,7 @@ Além disso, para fazer predição com dois conujuntos de preditores, temos que 
 ```
 
 
-# Execucao do Produto
+# Execução do Produto
 O produto pode ser executado através do script `main.R`, que faz a integração das três partes principais: treinamento, predição e geração de gráficos. Para executar o produto abra o Windows PowerShell e encontre o executável `Rscript.exe` (normalmente ele fica na pasta sinalizada abaixo), após isso execute o comando:
 
 ```
