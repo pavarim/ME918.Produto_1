@@ -3,9 +3,9 @@
 
 Este projeto foi desenvolvido para criar um pipeline automatizado que
 integra treinamento, predição e análise gráfica de modelos de regressão
-linear e logística. O produto é configurável, adaptando-se facilmente a
-diferentes conjuntos de dados e configurações, com base em um arquivo de
-configuração no formato YAML.
+linear e logística. O produto é configurável, adaptando-se facilmente
+aos diferentes conjuntos de dados e configurações, com base em um
+arquivo de configuração no formato YAML.
 
 A estrutura do projeto é composta pelos seguintes diretórios e arquivos:
 
