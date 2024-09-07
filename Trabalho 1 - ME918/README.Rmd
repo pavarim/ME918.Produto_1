@@ -7,7 +7,7 @@ Este projeto foi desenvolvido para criar um pipeline automatizado que integra tr
 
 A estrutura do projeto é composta pelos seguintes diretórios e arquivos:
 
-- `entradas/`: pasta com arquivos de entrada, isto é, o banco de dados, arquivo de configurações e arquivo com valores a serem preditos pelo modelo;
+- `entradas/`: pasta com arquivos de entrada, isto é, o banco de dados e arquivo com valores a serem preditos pelo modelo;
 - `saidas/`: psata com os arquivos gerados (modelos, gráficos e predições);
 - `R/`: pasta contendo os *scripts*: 
   - `treinamento.R`: Script de treinamento do modelo;
