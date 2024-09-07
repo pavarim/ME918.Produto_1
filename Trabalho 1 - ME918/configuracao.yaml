@@ -1,7 +1,9 @@
 tabela: mtcars.csv
-modelo: reg_linear
+modelo: reg_logistica
 reutilizar_modelo: nao
-escolhe_modelo: fit1
+escolhe_modelo: fit2
 pares:
-  - "y": mpg
-    "x": [wt, drat]
+  - "y": vs
+    "x": [wt]
+  - "y": vs
+    "x": [mpg, drat]

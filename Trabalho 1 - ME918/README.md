@@ -59,28 +59,22 @@ configurações a serem fornecidas devem ser as seguintes:
   - `"x"`: as variáveis preditoras.
 
 A seguir, temos um exemplo de como o arquivo `configuracoes.yaml` deve
-ser estruturado, utilizando o conjunto de dados `mtcars`, para fazer
-duas regressões logística utilizando `vs` como variável resposta e `wt`,
-para o primeiro modelo, e `wt` e `cyl` para o segundo como preditores:
+ser estruturado, utilizando o conjunto de dados `mtcars`, para fazer uma
+regressão logística utilizando `vs` como variável resposta e `wt` como
+preditora:
 
 ``` r
 tabela: mtcars.csv
 modelo: reg_logistica
 reutilizar_modelo: nao
-escolhe_modelo: fit2
+escolhe_modelo: fit1
 pares:
   - "y": vs
     "x": [wt]
-  - "y": vs
-    "x": [wt, drat]
 ```
 
-Além disso, é necessário escolher para qual modelo deve ser feita a
-predição, tal configuração deve ser especificada no arquivo
-`configuracoes.yaml`, neste caso foi escolhido o segundo modelo ajustado
-(`fit2`). Além disso, considere o interesse em fazer predição para dois
-conjuntos de preditores, temos que o arquivo `preditores.jsom` é dado
-por:
+Além disso, para fazer predição com dois conujuntos de preditores, temos
+que o arquivo `preditores.json` deve ser configrado como:
 
 ``` r
 [
@@ -102,8 +96,6 @@ sinalizada abaixo), após isso execute o comando:
 Além disso, de forma alternativa, é possível executar o produto por meio
 do `R`, sendo necessário abrir o `R` e utilizar o seguinte comando no
 console:
-
-**Nome do Código: exemplo.py**
 
 ``` r
 source('main.R')
@@ -130,4 +122,62 @@ Ao final da execução, os seguintes arquivos serão gerados na pasta
 
 # Exemplos
 
-Configurações de um
+1.  Regressão Lienar
+
+Utilizando o banco de dados `mtcars`, disponível na base do `R`, para
+ajustar um modelo de regressão linear com `mpg` como variável resposta e
+as preditoras `wt` e `drat` basta ajustar o arquivo `configuracoes.yaml`
+da seguinte forma:
+
+``` yaml
+tabela: mtcars.csv
+modelo: reg_linear
+reutilizar_modelo: nao
+escolhe_modelo: fit1
+pares:
+  - "y": mpg
+    "x": [wt, drat]
+```
+
+Ademais, é necessário colocar, no arquivo `preditores.json`, os valores
+para os quais deseja-se utilziar o modelo para predição, por exemplo:
+
+``` json
+[
+  {"wt":1,"drat":3},
+  {"wt":1,"drat":5}
+]
+```
+
+2.  Regressão Logística
+
+Utilizando o banco de dados `mtcars`, disponível na base do `R`, para
+ajustar dois modelos de regressão logística com `vs` como variável
+resposta e `wt`, para o primeiro modelo, e `mpg` e `drat`, para o
+segundo modelo, como variáveis preditoras basta ajustar o arquivo
+`configuracoes.yaml` da seguinte forma:
+
+``` r
+tabela: mtcars.csv
+modelo: reg_logistica
+reutilizar_modelo: nao
+escolhe_modelo: fit2
+pares:
+  - "y": vs
+    "x": [wt]
+  - "y": vs
+    "x": [mpg, drat]
+```
+
+Além disso, é necessário escolher para qual modelo deve ser feita a
+predição, note que neste caso foi selecionado o segundo modelo ajustado
+(`fit2`). Além disso, para fazer predições para dois conjuntos de
+preditores, temos que o arquivo `preditores.json` deve ser configurado
+como:
+
+``` r
+[
+  {"mpg":18,"drat":3},
+  {"mpg":20,"drat":5}
+]
+```
