@@ -103,7 +103,11 @@ Além disso, de forma alternativa, é possível executar o produto por meio
 do `R`, sendo necessário abrir o `R` e utilizar o seguinte comando no
 console:
 
-`r title="teste" source('main.R')`
+**Nome do Código: exemplo.py**
+
+``` r
+source('main.R')
+```
 
 <!-- O script `main.R` realiza as seguintes etapas: -->
 <!-- - Se `reutilizar_modelo for nao, ele ajusta o modelo especificado no arquivo configuracao.yaml, utilizando o arquivo de dados fornecido, e salva o modelo ajustado na pasta saidas; -->
