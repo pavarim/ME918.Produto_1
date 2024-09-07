@@ -63,7 +63,7 @@ ser estruturado, utilizando o conjunto de dados `mtcars`, para fazer uma
 regressão logística utilizando `vs` como variável resposta e `wt` como
 preditora:
 
-``` r
+``` yaml
 tabela: mtcars.csv
 modelo: reg_logistica
 reutilizar_modelo: nao
@@ -76,7 +76,7 @@ pares:
 Além disso, para fazer predição com dois conujuntos de preditores, temos
 que o arquivo `preditores.json` deve ser configrado como:
 
-``` r
+``` json
 [
   {"wt":1,"drat":3},
   {"wt":1,"drat":5}
