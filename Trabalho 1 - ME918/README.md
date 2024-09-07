@@ -138,8 +138,8 @@ pares:
     "x": [wt, drat]
 ```
 
-Ademais, é necessário colocar, no arquivo `preditores.json`, os valores
-para os quais deseja-se utilziar o modelo para predição, por exemplo:
+Ademais, no arquivo `preditores.json` é necessário colocar os valores em
+que se deseja utilizar o modelo para predição, por exemplo:
 
 ``` json
 [
@@ -168,11 +168,10 @@ pares:
     "x": [mpg, drat]
 ```
 
-Além disso, é necessário escolher para qual modelo deve ser feita a
-predição, note que neste caso foi selecionado o segundo modelo ajustado
-(`fit2`). Além disso, para fazer predições para dois conjuntos de
-preditores, temos que o arquivo `preditores.json` deve ser configurado
-como:
+Além disso, é necessário escolher qual modelo deve ser feita a predição,
+note que neste caso foi selecionado o segundo modelo ajustado (`fit2`).
+Além disso, para fazer predições para dois conjuntos de preditores,
+temos que o arquivo `preditores.json` deve ser configurado como:
 
 ``` json
 [
