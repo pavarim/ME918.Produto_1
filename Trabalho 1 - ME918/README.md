@@ -1,11 +1,9 @@
 
-# Introdução
+# PredModel
+## Introdução
 
-Este projeto foi desenvolvido para criar um pipeline automatizado que
-integra treinamento, predição e análise gráfica de modelos de regressão
-linear e logística. O produto é configurável, adaptando-se facilmente
-aos diferentes conjuntos de dados e configurações, com base em um
-arquivo de configuração no formato YAML.
+
+O Projeto PredModel oferece um pipeline automatizado para o treinamento, predição e análise gráfica de modelos de regressão linear e logística. Este guia descreve a estrutura dos arquivos do projeto, suas funcionalidades, e fornece um passo a passo para seu uso eficaz.
 
 A estrutura do projeto é composta pelos seguintes diretórios e arquivos:
 
@@ -14,18 +12,18 @@ A estrutura do projeto é composta pelos seguintes diretórios e arquivos:
 - `saidas/`: psata com os arquivos gerados (modelos, gráficos e
   predições);
 - `R/`: pasta contendo os *scripts*:
-  - `treinamento.R`: Script de treinamento do modelo;
-  - `predicao.R`: script de predição do modelo;
-  - `grafico.R`: script de análise gráfica;
-- `main.R`: script principal que integra todas as partes;
+  - `treinamento.R`: Arquivo responsável por armazenar a estrutura completa dos códigos relacionados ao treinamento dos modelos. Isso inclui a preparação dos dados, a configuração dos hiperparâmetros e a execução do processo de treinamento;
+  - `predicao.R`: Arquivo responsável por armazenar a estrutura dos códigos utilizados para realizar a predição com os modelos treinados. Inclui a preparação dos dados de entrada, a execução das predições e a geração dos resultados finais;
+  - `grafico.R`: Arquivo destinado para gerar o gráfico da predição para o conjunto de variáveis;
+- `main.R`: Arquivo responsável pela execução completa do projeto, passando por todos os scripts necessários;
 - `README.md`: arquivo de documentação;
-- `configuracao.yaml`: arquivo de configuração.
+- `configuracao.yaml`: Define as configurações necessárias para a realização das regressões. 
 
-# Requisitos
+## Requisitos
 
 Para executar o projeto corretamente, é necessário que o usuário tenha:
 
-- Linguagem de programação `R` na versão $4.3.2$ ou compatível;
+- - Linguagem de programação R, versão 4.3.2 ou compatível;
 - Um arquivo `configuracao.yaml` que define os parâmetros para a
   execução do pipeline;
 - Um conjunto de dados no formato `csv` localizado na pasta `entradas/`;
@@ -33,7 +31,7 @@ Para executar o projeto corretamente, é necessário que o usuário tenha:
   preditoras, que será utilizado para gerar as predições localizado na
   pasta `entradas/`.
 
-# Arquivo de Configuração e Predição
+## Arquivo de Configuração e Predição
 
 O arquivo `configuracao.yaml` é utilizado para especificar os parâmetros
 de entrada do produto, como o nome do banco de dados, o tipo de modelo a
@@ -52,7 +50,7 @@ configurações a serem fornecidas devem ser as seguintes:
   `fit1`;
 - `pares`: deve conter uma lista de blocos. Cada bloco é um conjunto de
   pares chave-valor, os quais geram arquivos com o sufixo `.rds`.
-  Ademais, Para preditores categóricos, não utilizar valores numéricos
+  Ademais, para preditores categóricos, não utilizar valores numéricos
   na sua identificação. Cada bloco deve conter:
   - `"y"`: a variável resposta;
   - `"x"`: as variáveis preditoras.
@@ -82,7 +80,7 @@ que o arquivo `preditores.json` deve ser configrado como:
 ]
 ```
 
-# Execução do Produto
+## Execução do Produto
 
 O produto pode ser executado através do script `main.R`, que faz a
 integração das três partes principais: treinamento, predição e geração
@@ -105,10 +103,9 @@ source('main.R')
 <!-- - Executa o script predicao.R, que gera predições com base no modelo ajustado e nas variáveis preditoras fornecidas no arquivo preditores.json; -->
 <!-- - Executa o script grafico.R, que gera um gráfico comparando os valores observados e preditos e salva esse gráfico na pasta saidas. -->
 
-# Resultados
+## Resultados
 
-Ao final da execução, os seguintes arquivos serão gerados na pasta
-`saidas/`:
+Após a execução do pipeline, o PredModel gera automaticamente os seguintes arquivos na pasta `saidas/`:
 
 - Modelos ajustados, com sufixo `.rds` (e.g. `fit1.rds`);
 - Arquivo de predição com sufixo `.json` contendo as predições geradas
@@ -119,7 +116,7 @@ Ao final da execução, os seguintes arquivos serão gerados na pasta
 - Um QQPlot identificando o modelo escolhido em formato `.pdf`
   (e.g. `fit1_QQplot.pdf`).
 
-# Exemplos
+## Exemplos
 
 1.  Regressão Lienar
 
