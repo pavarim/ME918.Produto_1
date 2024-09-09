@@ -1,9 +1,12 @@
 
 # PredModel
+
 ## Introdução
 
-
-O Projeto PredModel oferece um pipeline automatizado para o treinamento, predição e análise gráfica de modelos de regressão linear e logística. Este guia descreve a estrutura dos arquivos do projeto, suas funcionalidades, e fornece um passo a passo para seu uso eficaz.
+O Projeto PredModel oferece um pipeline automatizado para o treinamento,
+predição e análise gráfica de modelos de regressão linear e logística.
+Este guia descreve a estrutura dos arquivos do projeto, suas
+funcionalidades, e fornece um passo a passo para seu uso eficaz.
 
 A estrutura do projeto é composta pelos seguintes diretórios e arquivos:
 
@@ -12,18 +15,27 @@ A estrutura do projeto é composta pelos seguintes diretórios e arquivos:
 - `saidas/`: psata com os arquivos gerados (modelos, gráficos e
   predições);
 - `R/`: pasta contendo os *scripts*:
-  - `treinamento.R`: Arquivo responsável por armazenar a estrutura completa dos códigos relacionados ao treinamento dos modelos. Isso inclui a preparação dos dados, a configuração dos hiperparâmetros e a execução do processo de treinamento;
-  - `predicao.R`: Arquivo responsável por armazenar a estrutura dos códigos utilizados para realizar a predição com os modelos treinados. Inclui a preparação dos dados de entrada, a execução das predições e a geração dos resultados finais;
-  - `grafico.R`: Arquivo destinado para gerar o gráfico da predição para o conjunto de variáveis;
-- `main.R`: Arquivo responsável pela execução completa do projeto, passando por todos os scripts necessários;
+  - `treinamento.R`: Arquivo responsável por armazenar a estrutura
+    completa dos códigos relacionados ao treinamento dos modelos. Isso
+    inclui a preparação dos dados, a configuração dos hiperparâmetros e
+    a execução do processo de treinamento;
+  - `predicao.R`: Arquivo responsável por armazenar a estrutura dos
+    códigos utilizados para realizar a predição com os modelos
+    treinados. Inclui a preparação dos dados de entrada, a execução das
+    predições e a geração dos resultados finais;
+  - `grafico.R`: Arquivo destinado para gerar o gráfico da predição para
+    o conjunto de variáveis;
+- `main.R`: Arquivo responsável pela execução completa do projeto,
+  passando por todos os scripts necessários;
 - `README.md`: arquivo de documentação;
-- `configuracao.yaml`: Define as configurações necessárias para a realização das regressões. 
+- `configuracao.yaml`: Define as configurações necessárias para a
+  realização das regressões.
 
 ## Requisitos
 
 Para executar o projeto corretamente, é necessário que o usuário tenha:
 
-- - Linguagem de programação R, versão 4.3.2 ou compatível;
+- Linguagem de programação R na versão 4.3.2 ou compatível;
 - Um arquivo `configuracao.yaml` que define os parâmetros para a
   execução do pipeline;
 - Um conjunto de dados no formato `csv` localizado na pasta `entradas/`;
@@ -98,14 +110,10 @@ console:
 source('main.R')
 ```
 
-<!-- O script `main.R` realiza as seguintes etapas: -->
-<!-- - Se `reutilizar_modelo for nao, ele ajusta o modelo especificado no arquivo configuracao.yaml, utilizando o arquivo de dados fornecido, e salva o modelo ajustado na pasta saidas; -->
-<!-- - Executa o script predicao.R, que gera predições com base no modelo ajustado e nas variáveis preditoras fornecidas no arquivo preditores.json; -->
-<!-- - Executa o script grafico.R, que gera um gráfico comparando os valores observados e preditos e salva esse gráfico na pasta saidas. -->
-
 ## Resultados
 
-Após a execução do pipeline, o PredModel gera automaticamente os seguintes arquivos na pasta `saidas/`:
+Após a execução do pipeline, o PredModel gera automaticamente os
+seguintes arquivos na pasta `saidas/`:
 
 - Modelos ajustados, com sufixo `.rds` (e.g. `fit1.rds`);
 - Arquivo de predição com sufixo `.json` contendo as predições geradas
