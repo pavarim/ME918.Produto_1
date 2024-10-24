@@ -1,9 +1,0 @@
-tabela: mtcars.csv
-modelo: reg_logistica
-reutilizar_modelo: nao
-escolhe_modelo: fit2
-pares:
-  - "y": vs
-    "x": [wt]
-  - "y": vs
-    "x": [mpg, drat]
