@@ -1,6 +1,9 @@
 
 # PredModel
 
+Eric Pavarim Lima, João Victor Siqueira Rodrigues 
+Luiz Felipe de Oliveira Barbosa Nunes, Mariana Peres Nascimento
+
 ## Introdução
 
 O Projeto PredModel oferece um pipeline automatizado para o treinamento,
